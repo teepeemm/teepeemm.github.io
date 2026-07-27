@@ -70,13 +70,9 @@ Creating Elements
 ### Logo in the header
 ``` tex
 \newsavebox\logobox
-\savebox\logobox{%
-  \includegraphics[artifact,
-    height=\baselineskip]{logofile}}
+\savebox\logobox{\includegraphics[artifact,height=\baselineskip]{logofile}}
 % possibly after \maketitle frame
-\AddToHook{shipout/foreground}{%
-  \put(\paperwidth - \wd\logobox - 10mm,
-       -8.5mm){\usebox\logobox}}
+\AddToHook{shipout/foreground}{\put(\paperwidth - \wd\logobox - 10mm,-8.5mm){\usebox\logobox}}
 ```
 
 ### Custom footer element
