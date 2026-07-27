@@ -9,10 +9,9 @@ Accessible PDF files using LaTeX
     lang=en,
     tagging=on,
     pdfstandard=ua-2,
-%  check-tagging-status,
+  %  check-tagging-status,
     tagging-setup={
-%    math/alt/use,               % <=> Formulas must have description/alt text
-%    role/new-tag=frametitle/H1, % <=> headings must begin at level 1
+  %    math/alt/use,               % <=> Formulas must have description/alt text
       math/setup=mathml-SE
     }
 }
@@ -20,11 +19,15 @@ Accessible PDF files using LaTeX
 \usepackage{unicode-math}
 ```
 * Compile with LuaLaTeX
-* Any `\includegraphics`, `\tikz`, or `{tikzpicture}` or `{picture}` environments need `alt={...}` in the options (if the image is truly decorative, you can use the option `artifact` instead of `alt`; a different option is `actualtext={...}` if your image is really text in disguise).  See `texdoc latex-lab-graphic` for more
-* Before tabular (or similar), use `\tagpdfsetup{table/header-rows={...},table/header-columns={...}}`. Use `\tagpdfsetup{table/multirow={...}}` within such cells.  See `texdoc latex-lab-table` for more
-* The `check-tagging-status` key will report [general class and package status](https://latex3.github.io/tagging-project/tagging-status/)
-* [For more information](https://latex3.github.io/tagging-project/documentation/usage-instructions.html)
-* If you must, you can [make the title act as a header](https://tex.stackexchange.com/a/758805/107497), but using `\section*` is better
+* Any `\includegraphics`, `\tikz`, or `{tikzpicture}` or `{picture}` environments need `alt={...}` in the options (if the image is truly decorative, you can use the option `artifact` instead of `alt`; a different option is `actualtext={...}` if your image is really text in disguise).
+[Other alt text guidelines](altText.html).
+See `texdoc latex-lab-graphic` for more.
+* Before tabular (or similar), use `\tagpdfsetup{table/header-rows={...},table/header-columns={...}}`. Use `\tagpdfsetup{table/multirow={...}}` within such cells.
+See `texdoc latex-lab-table` for more.
+* The `check-tagging-status` key will report [general class and package status](https://latex3.github.io/tagging-project/tagging-status/).
+* [For more information](https://latex3.github.io/tagging-project/documentation/usage-instructions.html).
+* If you must, you can [make the title act as a header](https://tex.stackexchange.com/a/758805/107497), but using `\section*` is better.
+* [Further guidelines for presentations](ltx-talk.html)
 
 Package/class substitutions:
 -----------
