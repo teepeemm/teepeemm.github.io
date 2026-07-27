@@ -1,0 +1,75 @@
+% !TEX TS-program = lualatex
+\DocumentMetadata{
+  lang=en,
+  tagging=on,
+  pdfstandard=ua-2,
+%  check-tagging-status,
+  tagging-setup={
+%    math/alt/use,               % iff Ally
+%    role/new-tag=frametitle/H1, % iff Ally
+    math/setup=mathml-SE
+  }
+}
+\documentclass{ltx-talk}
+
+\date{Date}
+\title[Short Title]{Full Title}
+\subtitle{Subtitle}
+\author[Short Author]{Full Author Name}
+\institute{University of North Dakota}
+
+% true value
+%\providecolor{maybeUNDgreen}{Hsb}{146,1,0.62}
+% more contrast with white
+\providecolor{maybeUNDgreen}{Hsb}{146,1,0.53}
+
+\EditInstance{header}{std}{
+  background-color = maybeUNDgreen,
+  color            = white,
+}
+
+\DeclareInstance{footer-element}{frameoftotal}{talk}{}
+\ExpandArgs{c}\newcommand{@frameoftotal}{%
+ \arabic{frame}/\RefProperty{lastpage}{totalframes}
+}
+\EditInstance{footer}{std}{
+  color         = black!75,
+  separator     = \hfill|\hfill,
+  element-order = {date, author, title, frameoftotal},
+}
+
+\DeclareInstance{titlepage-element}{titlegraphic}{talk}{}
+% department logo obtained locally
+% other graphics from https://campus.und.edu/brand/downloads.html
+% primary logotype, full color, svg converted to pdf
+\ExpandArgs{c}\newcommand{@titlegraphic}{%
+  \addvspace{\medskipamount}
+  \includegraphics[
+    actualtext={University of North Dakota, Mathematics \& Statistics},
+    width=5cm
+  ]{MathStats-CMYK_primary.jpg}% logotype-full
+  \addvspace{\smallskipamount}
+}
+\newsavebox\logobox
+\savebox\logobox{%
+  \includegraphics[artifact, height=\baselineskip]{flame-w-rgb}}
+\AddToHook{shipout/foreground}{%
+  \put(\paperwidth - \wd\logobox - 10mm,
+       -8.5mm){\usebox\logobox}} % -\ht\logobox
+
+
+\begin{document}
+
+\begin{frame}
+\maketitle[
+  element-order = {title, author, titlegraphic, date},
+  framestyle = plain,
+]
+\end{frame}
+
+\begin{frame}
+\frametitle{Sample frame}
+with some content
+\end{frame}
+
+\end{document}
