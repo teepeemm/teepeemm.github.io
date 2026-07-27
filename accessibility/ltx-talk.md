@@ -25,7 +25,7 @@ Template Defaults:
 
 |Key|Type|Default|
 |---|----|-------|
-|color|tokenlist|structure (= rgb(0.2,0.2,0.7) =blue) \\
+|color|tokenlist|structure (= rgb(0.2,0.2,0.7) =blue)|
 |font|tokenlist|`\normalfont`|
 |height|length|`\Gm@tmargin +\headsep` = 10mm + 2mm|
 |left-hspace|skip|`\Gm@lmargin` = 10mm|
@@ -95,9 +95,9 @@ Other
 
 ### Float Positioning
 
-`\EditInstance{floatenv}{std}{horizontal-alignment = <alignment>}`,
-where `<alignment>` is left (default), center, or right.
+`\EditInstance{floatenv}{std}{horizontal-alignment = ⟨alignment⟩}`,
+where `⟨alignment⟩` is left (default), center, or right.
 
 ### Opacity
 
-`\EditInstance{hidden}{std}{opacity=<value>}`, where 0≤`<value>`≤1, with the default 0 being "invisible".
+`\EditInstance{hidden}{std}{opacity=⟨value⟩}`, where 0≤`⟨value⟩`≤1, with the default 0 being "invisible".
