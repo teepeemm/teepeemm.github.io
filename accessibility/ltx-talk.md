@@ -80,9 +80,9 @@ Creating Elements
 ``` tex
 \DeclareInstance{footer-element}{myelement}{talk}{...}
 \ExpandArgs{c}\newcommand{@myelement}{...}
+% for example
+\ExpandArgs{c}\newcommand{@frameoftotal}{\arabic{frame}/\RefProperty{lastpage}{totalframes}}
 ``` 
-For example,
-`\ExpandArgs{c}\newcommand{@frameoftotal}{\arabic{frame}/\RefProperty{lastpage}{totalframes}}`.
 (If you also define `\@shortmyelement`, ltx-talk will use that.)
 
 ### Custom title element
