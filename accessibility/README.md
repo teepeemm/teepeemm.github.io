@@ -11,7 +11,7 @@ Accessible PDF files using LaTeX
     pdfstandard=ua-2,
   %  check-tagging-status,
     tagging-setup={
-  %    math/alt/use,               % <=> Formulas must have description/alt text
+  %    math/alt/use,  % <=> Formulas must have description/alt text
       math/setup=mathml-SE
     }
 }
@@ -60,7 +60,7 @@ PDF Screen readers:
 
 Other links:
 -----------
-* An ltx-talk [template](ltx-talk-und) for UND themed presentation
+* An ltx-talk [template](ltx-talk-und) for UND themed presentations
 * [Test PDF files](https://texlive.net/tests/MathML/)
 * [Tagging increases various system requirements](https://tex.stackexchange.com/a/751610/107497), so you may need [to increase](https://tex.stackexchange.com/a/741777/107497) [some limits](https://tex.stackexchange.com/a/518522/107497)
 

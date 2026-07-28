@@ -25,16 +25,17 @@ Template Defaults:
 
 |Key|Type|Default|
 |---|----|-------|
-|color|tokenlist|structure (= rgb(0.2,0.2,0.7) =blue)|
+|color|tokenlist|structure (=rgb(0.2,0.2,0.7)~blue)|
 |font|tokenlist|`\normalfont`|
-|height|length|`\Gm@tmargin +\headsep` = 10mm + 2mm|
+|height|length|`\Gm@tmargin+\headsep` = 10mm + 2mm|
 |left-hspace|skip|`\Gm@lmargin` = 10mm|
 |print-frame-title|boolean|true|
 |right-hspace|skip|`\Gm@rmargin` = 10mm|
 |background-color|tokenlist||
 
-To make adjustments, call `\EditInstance{header}{std}{⟨key=value⟩}` or
-`\EditInstance{frametitle}{header}{font=⟨...⟩}`.
+To make adjustments, call `\EditInstance{header}{std}{⟨key=value⟩}`.
+
+The frametitle is a different template with default font `\Large\bfseries`, so that its adjustments are done by `\EditInstance{frametitle}{header}{font=⟨...⟩}`.
 
 ### `\ShowTemplateDefaults{footer}{talk}`
 
