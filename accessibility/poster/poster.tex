@@ -1,0 +1,279 @@
+\DocumentMetadata{
+  lang=en,
+  tagging=on,
+  pdfstandard=ua-2,
+%  check-tagging-status,
+  tagging-setup={
+%    math/alt/use,
+    math/setup=mathml-SE
+  }
+}
+
+\title[pdftitle={Creating Accessible PDFs With LaTeX is Quick and Easy}]
+{\VeryHuge Creating Accessible PDFs With \texorpdfstring{\LaTeX}{LaTeX} is
+Quick and Easy%
+\texorpdfstring{\footnote{As long as you start with
+good source material. (You have good \LaTeX\ sources, don't you?)}}{}}
+%\title[pdftitle={Creating Accessible PDFs With LaTeX is Quick and Easy}]
+%{Creating Accessible PDFs With \texorpdfstring{\LaTeX}{LaTeX} is Quick and Easy%
+%\footnote{\Large\textsuperscript{\fnsymbol{footnote}}As long as you start with
+%good source material. (You have good \LaTeX\ sources, don't you?)}%
+%\textsuperscript{\fnsymbol{footnote}}}
+
+\renewcommand\thefootnote{\fnsymbol{footnote}}
+
+% these need to be blank for the maketitle
+\author{} % Timothy Prescott
+%\institute{University of North Dakota}
+%\logo{\includegraphics{example-image}}
+\date{} % August 6, 2026
+
+%\documentclass{article}
+%\begin{document}
+%%%\maketitle
+%
+%\makeatletter
+%\tagstructbegin{tag=Title}\tagmcbegin{}\@title\tagmcend\tagstructend
+%\makeatother
+%\makeatletter
+%\AddToHook{cmd/@makefnmark/before}{\Large}
+%\makeatother
+%
+%Tim Prescott
+%
+%July 20, 2026
+%\end{document}
+
+\documentclass[a1]{a0poster}
+\renewcommand\footnotesize\Large
+
+% beamer.cls & beamerposter.sty -> beamer unsupported
+% fancytikzposter merged into tikzposter
+% baposter -> no longer exists
+% tikzposter.cls -> loads exscale.sty currently incompatible #1154
+% a0poster.cls -> loads very few files
+% sciposter -> loads shadow.sty currently incompatible #336
+% tcolorbox library poster
+% umbcposter (arabic)
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{qrcode}
+\usepackage{listings}
+
+\usepackage{xcolor}
+
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{alert}{RGB}{200,0,0}
+\colorlet{example}{green!50!black}
+\definecolor{structure}{rgb}{0.2,0.2,0.7}
+
+%%%%%%% begin qrcode adjustment
+% https://tex.stackexchange.com/a/718275/107497
+\usepackage{etoolbox}
+\makeatletter
+\ExplSyntaxOn
+\cs_new_protected:Npn\qr@savepos 
+ {
+  \tex_savepos:D 
+  \RecordProperties{qr@save-\theqrcodecnt}{xpos,ypos}
+  \tex_savepos:D 
+ }
+\cs_new:Npn \qr@diminbp #1 {\dim_to_decimal_in_bp:n {#1}}
+\ExplSyntaxOff
+
+\newcounter{qrcodecnt}
+\NewSocket{tagsupport/qrcode/begin}{0}
+\NewSocket{tagsupport/qrcode/end}{0}
+\NewSocketPlug{tagsupport/qrcode/begin}{tag}
+ {%
+   \leavevmode
+   \tagmcend%
+   \stepcounter{qrcodecnt}\qr@savepos%
+   \ExpandArgs{e}\tagpdfsetup
+     {role/new-attribute=
+      {qrcode-\theqrcodecnt}
+      {
+       /O /Layout 
+       /BBox [\qr@diminbp{\RefProperty{qr@save-\theqrcodecnt}{xpos}sp}
+              \qr@diminbp{\RefProperty{qr@save-\theqrcodecnt}{ypos}sp-0.5\qr@desiredheight}
+              \qr@diminbp{\RefProperty{qr@save-\theqrcodecnt}{xpos}sp+\qr@desiredheight} 
+              \qr@diminbp{\RefProperty{qr@save-\theqrcodecnt}{ypos}sp+0.5\qr@desiredheight}] 
+      }%
+     }%
+   \tagstructbegin{tag=Figure,alt=\qr@texttoencode,
+    attribute=qrcode-\theqrcodecnt}%
+   \tagmcbegin{}%
+  }
+  
+\NewSocketPlug{tagsupport/qrcode/end}{tag} 
+ {\tagmcend\tagstructend\tagmcbegin{}}
+ 
+\AssignSocketPlug{tagsupport/qrcode/begin}{tag} 
+\AssignSocketPlug{tagsupport/qrcode/end}{tag} 
+
+\def\qrcode@hyperwrapper@hyperref#1{%
+  \href{\qr@texttoencode}%
+   {\UseTaggingSocket{qrcode/begin}\SuspendTagging{qrcode}%
+    #1\ResumeTagging{qrcode}\UseTaggingSocket{qrcode/end}}}
+ 
+\def\qrcode@hyperwrapper@nohyperref#1{%
+  \UseTaggingSocket{qrcode/begin}\SuspendTagging{qrcode}%
+  #1\ResumeTagging{qrcode}\UseTaggingSocket{qrcode/end}}
+
+\patchcmd\qrcode@int{\relax}{\qrcode@hyperwrapper@nohyperref}{}{\fail}
+
+\makeatother
+%%%%% end qrcode adjustment
+
+\ProvideDocumentEnvironment{tcb@manual@entry}{}{}{} % needed for the next line
+\usepackage{tagpdfdocu-patches}% needed to make listings work properly
+
+\lstset{
+  columns=fullflexible,
+  keepspaces=true,
+  commentstyle=\slshape,
+  basicstyle=\ttfamily\color{structure}
+%  \lst@ifdisplaystyle\small\fi
+  ,
+  language={[LaTeX]TeX}
+}
+
+\newcommand{\cs}[1]{\texttt{\textbackslash #1}}
+\newcommand{\tubbraced}[1]{\texttt{\{#1\}}}
+\newcommand{\meta}[1]{\ensuremath{\langle}%
+ \ifmmode\expandafter\mbox\fi{\itshape #1\/}%
+ \ensuremath{\rangle}%
+}
+
+%\providecolor{maybeUNDgreen}{Hsb}{146,1,0.62}
+\providecolor{maybeUNDgreen}{Hsb}{146,1,0.53}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\EditInstance{list}{itemize-2}{
+ item-indent=0em,
+ item-label=\textrightarrow,
+ label-sep=.5em
+}
+
+\renewcommand\footnoterule\relax
+\setlength\footnotemargin{12.5in}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\raggedright
+\vspace{-.75in}
+\Large
+\begin{minipage}[t]{.25\textwidth}
+How to:
+\begin{itemize}
+\item \textcolor{example}{Update} \LaTeX
+\item Start with:% \textcolor{structure}{\cs{DocumentMetadata}}
+\begin{lstlisting}[aboveskip=\smallskipamount,belowskip=\smallskipamount]
+\DocumentMetadata{
+  lang=en,
+  tagging=on,
+  pdfstandard=ua-2,
+% check-tagging-status,
+  tagging-setup={
+%    math/alt/use, % iff Ally
+    math/setup=mathml-SE
+  }
+}
+\documentclass{...}
+\usepackage{unicode-math}
+\end{lstlisting}
+\item Compile with \textcolor{example}{Lua\LaTeX}
+\item \textcolor{example}{Images} need \textcolor{structure}{\texttt{alt}}\\
+\null\quad (or \textcolor{structure}{\texttt{actualtext}}\\%)
+\null\quad\phantom(or \textcolor{structure}{\texttt{artifact}})
+\item \textcolor{example}{Tables} need
+\begin{lstlisting}[aboveskip=0pt,belowskip=0pt]
+\tagpdfsetup{
+  table/header-rows   ={...},
+  table/header-columns={...}
+}
+\end{lstlisting}
+\begin{minipage}[t][.5\baselineskip]{\textwidth}
+and multirow cells need\\
+{\color{structure}\verb|\tagpdfsetup{table/multirow={...}}|}
+\end{minipage}
+%\begin{lstlisting}
+%\tagpdfsetup{table/multirow={...}}
+%\end{lstlisting}
+%\item (You \emph{were} semantically marking up your document, weren't you?)
+\end{itemize}
+\end{minipage}%
+\begin{minipage}[t]{.45\textwidth}
+\centering
+\vspace*{\baselineskip}
+\qrcode[height=.2\textheight,nolink]{https://teepeemm.github.io/accessibility/}\\\vspace{\baselineskip}
+\url{https://teepeemm.github.io/accessibility/}\\
+\vspace{3\baselineskip}
+\Huge Timothy Prescott\\\bigskip
+\includegraphics[width=.5\linewidth,actualtext={University of North Dakota, Mathematics \& Statistics}]{MathStats-CMYK_primary}
+\end{minipage}%
+\begin{minipage}[t]{.3\textwidth}
+Package \& class changes:
+\begin{itemize}[item-indent=-1em,left-margin=1em]
+\item \textcolor{alert}{enumitem}, \textcolor{alert}{enumerate}
+\begin{itemize}
+\item \textcolor{example}{enumext} or
+\item \texttt{texdoc blocks-doc}% for many new options
+\end{itemize}
+%\item marginnote, marginfit, and marginfix\\
+%\textrightarrow\ marginalia or \cs{marginpar}
+\item \textcolor{alert}{titlesec}
+\begin{itemize}
+\item \textcolor{example}{\cs{@startsection}}\\
+\quad(see \texttt{texdoc source2e})
+ or
+\item \texttt{texdoc latex-lab-sec-template}% for many new options
+\end{itemize}
+\item \textcolor{alert}{beamer}
+\begin{itemize}
+\item \textcolor{example}{ltx-talk}
+\end{itemize}
+\end{itemize}
+Other packages' status:\\
+\textcolor{alert}{\url{https://latex3.github.io/tagging-project/tagging-status/}}\par
+\vspace{1in}
+To listen to the results:
+\begin{itemize}
+\item NVDA or JAWS
+\item Adobe or Foxit or Firefox
+\end{itemize}\vspace{1in}
+To validate the results:
+\begin{itemize}
+\item veraPDF or PDFix
+\item \texttt{show-pdf-tags}
+\end{itemize}
+%\vspace{4\baselineskip}
+%\hfill
+%\makebox[0pt][r]{%
+%\textsuperscript{\fnsymbol{footnote}}%
+%As long as you start with good source material.
+%(You have good \LaTeX\ sources, don't you?)%
+%}
+\end{minipage}
+%\end{center}
+\end{document}
+
+\tiny 12pt
+\scriptsize 14.4pt
+\footnotesize 17.28pt
+\small 20.74pt
+\normalsize 24.88pt
+\large 29.86pt
+\Large 35.83pt
+\LARGE 43pt
+\huge 51.6pt
+\Huge 61.92pt
+\veryHuge 74.3pt
+\VeryHuge 89.16pt
+\VERYHuge 107pt
+
+  \includegraphics[artifact, height=\baselineskip]{flame-w-rgb}
