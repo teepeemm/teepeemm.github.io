@@ -1,7 +1,7 @@
 
 Accessible PDF files using LaTeX
 ===========================
-* The [MathFest poster](https://teepeemm.github.io/accessibility/poster/poster.pdf), [its TeX source](poster/poster.tex), and its [reading by NVDA in Foxit](https://teepeemm.github.io/accessibility/poster/poster.mp3) (and [the graphic](poster/MathStats-CMYK_primary.jpg))
+* The [MathFest poster](https://teepeemm.github.io/accessibility/poster/poster.pdf), [its TeX source](https://teepeemm.github.io/accessibility/poster/poster.tex), and its [reading by NVDA in Foxit](https://teepeemm.github.io/accessibility/poster/poster.mp3) (and [the graphic](https://teepeemm.github.io/accessibility/poster/MathStats-CMYK_primary.jpg))
 * Make sure you have the latest TeX version, and have [updated your packages](https://tex.stackexchange.com/q/55437/107497)
 * As the first commands, use
 ``` latex
@@ -32,7 +32,6 @@ See `texdoc latex-lab-table` for more.
 Package/class substitutions:
 -----------
 * `enumitem` and `enumerate` -> `enumext` or `texdoc blocks-doc` for many new options
-<!--* `marginnote`, `marginfit`, and `marginfix` -> `marginalia` or `\marginpar`-->
 * `titlesec` -> `\@startsection` (see `texdoc source2e`) or `texdoc latex-lab-sec-template` for many new options
 * `beamer` -> `ltx-talk`
 
