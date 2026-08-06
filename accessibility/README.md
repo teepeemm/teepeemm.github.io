@@ -32,7 +32,7 @@ See `texdoc latex-lab-table` for more.
 Package/class substitutions:
 -----------
 * `enumitem` and `enumerate` -> `enumext` or `texdoc blocks-doc` for many new options
-* `marginnote`, `marginfit`, and `marginfix` -> `marginalia` or `\marginpar`
+<!--* `marginnote`, `marginfit`, and `marginfix` -> `marginalia` or `\marginpar`-->
 * `titlesec` -> `\@startsection` (see `texdoc source2e`) or `texdoc latex-lab-sec-template` for many new options
 * `beamer` -> `ltx-talk`
 
