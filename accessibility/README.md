@@ -29,6 +29,7 @@ See `texdoc latex-lab-table` for more.
 * If you must, you can [make the title act as a header](https://tex.stackexchange.com/a/758805/107497), but using `\section*` is better.
 * [Further guidelines for presentations](ltx-talk.html)
 
+
 Package/class substitutions:
 -----------
 * `enumitem` and `enumerate` -> `enumext` or `texdoc blocks-doc` for many new options
