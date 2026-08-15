@@ -104,4 +104,5 @@ where `⟨alignment⟩` is left (default), center, or right.
 `\EditInstance{hidden}{std}{opacity=⟨value⟩}`, where 0≤`⟨value⟩`≤1, with the default 0 being "invisible".
 
 ### Other examples
-https://www.texdev.net/ltx-talk/examples/
+
+[Other examples](https://www.texdev.net/ltx-talk/examples/)
