@@ -10,12 +10,12 @@ Accessible Presentations using LaTeX
     pdfstandard=ua-2,
   %  check-tagging-status,
     tagging-setup={
-  %    math/alt/use,               % <=> Formulas must have description/alt text
-  %    role/new-tag=frametitle/H1, % <=> headings must begin at level 1
+  %    math/alt/use,  % <=> Formulas must have description/alt text
       math/setup=mathml-SE
     }
 }
 \documentclass{ltx-talk}
+% \AtBeginDocument{\tagpdfsetup{role/new-tag=frametitle/H1}}  % <=> headings must begin at level 1
 ```
 
 Template Defaults:
@@ -102,3 +102,6 @@ where `⟨alignment⟩` is left (default), center, or right.
 ### Opacity
 
 `\EditInstance{hidden}{std}{opacity=⟨value⟩}`, where 0≤`⟨value⟩`≤1, with the default 0 being "invisible".
+
+### Other examples
+https://www.texdev.net/ltx-talk/examples/

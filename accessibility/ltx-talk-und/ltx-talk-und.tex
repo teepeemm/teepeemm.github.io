@@ -5,12 +5,12 @@
   pdfstandard=ua-2,
 %  check-tagging-status,
   tagging-setup={
-%    math/alt/use,               % iff Ally
-%    role/new-tag=frametitle/H1, % iff Ally
+%    math/alt/use,  % iff Ally
     math/setup=mathml-SE
   }
 }
 \documentclass{ltx-talk}
+%\AtBeginDocument{\tagpdfsetup{role/new-tag=frametitle/H1}}  % iff Ally
 
 \date{Date}
 \title[Short Title]{Full Title}
@@ -18,45 +18,49 @@
 \author[Short Author]{Full Author Name}
 \institute{University of North Dakota}
 
-% true value
-%\providecolor{maybeUNDgreen}{Hsb}{146,1,0.62}
-% more contrast with white
-\providecolor{maybeUNDgreen}{Hsb}{146,1,0.53}
+% setup the colors.  we use darker colors than official to get better contrast
+\providecolor{maybeUNDorange}{Hsb}{19,0.88,0.88}  % officially ,,1
+\providecolor{maybeUNDgreen}{Hsb}{146,1,0.53}  % officially ,,0.62
+\colorlet{alert}{maybeUNDorange}
+\colorlet{example}{structure}
+\colorlet{structure}{maybeUNDgreen}
 
 \EditInstance{header}{std}{
-  background-color = maybeUNDgreen,
+  background-color = structure,
   color            = white,
 }
 
 \DeclareInstance{footer-element}{frameoftotal}{talk}{}
 \ExpandArgs{c}\newcommand{@frameoftotal}{%
- \arabic{frame}/\RefProperty{lastpage}{totalframes}
+  \arabic{frame}/\RefProperty{lastpage}{totalframes}
 }
 \EditInstance{footer}{std}{
-  color         = black!75,
-  separator     = \hfill|\hfill,
+  separator     = \hfill,
   element-order = {date, author, title, frameoftotal},
 }
 
-\DeclareInstance{titlepage-element}{titlegraphic}{talk}{}
+\DeclareInstance{titlepage-element}{titlegraphic}{talk}{
+  before-skip = \medskipamount,
+  after-skip = \smallskipamount
+}
 % department logo obtained locally
 % other graphics from https://campus.und.edu/brand/downloads.html
 % primary logotype, full color, svg converted to pdf
 \ExpandArgs{c}\newcommand{@titlegraphic}{%
-  \addvspace{\medskipamount}
   \includegraphics[
     actualtext={University of North Dakota, Mathematics \& Statistics},
     width=5cm
-  ]{MathStats-CMYK_primary.jpg}% logotype-full
-  \addvspace{\smallskipamount}
+  ]{MathStats-CMYK_primary.jpg}
 }
+
 \newsavebox\logobox
 \savebox\logobox{%
   \includegraphics[artifact, height=\baselineskip]{flame-w-rgb}}
 \AddToHook{shipout/foreground}{%
   \put(\paperwidth - \wd\logobox - 10mm,
        -8.5mm){\usebox\logobox}} % -\ht\logobox
-
+% technically, this puts the logo on the title page as well
+% but it's invisible on the white background
 
 \begin{document}
 
