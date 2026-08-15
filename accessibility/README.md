@@ -27,7 +27,7 @@ See `texdoc latex-lab-table` for more.
 * The `check-tagging-status` key will report [general class and package status](https://latex3.github.io/tagging-project/tagging-status/).
 * [For more information](https://latex3.github.io/tagging-project/documentation/usage-instructions.html).
 * If you must, you can [make the title act as a header](https://tex.stackexchange.com/a/758805/107497), but using `\section*` is better.
-* [Further guidelines for presentations](ltx-talk.html)
+* [Further guidelines for presentations](ltx-talk.html) (and [a UND template](ltx-talk-und/))
 
 
 Package/class substitutions:
