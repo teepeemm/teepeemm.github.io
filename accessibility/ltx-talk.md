@@ -1,5 +1,5 @@
 
-Accessible Presentations using LaTeX
+Accessible presentations using LaTeX
 ===========================
 * Follow all of the guidelines for [accessible PDFs](./).
 * As the first commands, use
@@ -18,7 +18,27 @@ Accessible Presentations using LaTeX
 % \AtBeginDocument{\tagpdfsetup{role/new-tag=frametitle/H1}}  % <=> headings must begin at level 1
 ```
 
-Template Defaults:
+Frame titles
+-------------
+
+You have two options for frame titles:
+```
+\documentclass{ltx-talk}
+...
+\begin{frame}
+\frametitle{The frame title}
+```
+or
+```
+\documentclass[frame-title-arg]{ltx-talk}
+...
+\begin{frame}{The frame title}
+```
+
+For accessibility reasons, it's probably best to always have a frame title.
+If you don't want to show the frame title in your presentation, you can use `\thispagestyle{empty}`.
+
+Template defaults
 -----------
 
 ### `\ShowTemplateDefaults{header}{talk}`
@@ -65,7 +85,7 @@ Default `\maketitle` is equivalent to
 ```
 `framestyle` is `pagestyle`, and can also be `plain`, `empty`, or `wallpaper` (header & footer have color but no text).
 
-Creating Elements
+Creating elements
 -----------------
 
 ### Logo in the header
