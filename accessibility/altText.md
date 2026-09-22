@@ -13,17 +13,13 @@
 * Starting your alt-text with "Image of" (Caveat: It's ok to indicate what kind of image has been included, including "Screenshot of", "Black and white image of", "graphic of", or "cartoon"; most screen readers say "Image:" leading into the alt-text, so starting with "Image" causes the word to be repeated)
 * Including every detail in the image
 * Confusing images captions with alt-text
-* Using inaccurate or subjective alt-text to describe an image
-* Including every detail in the image
-* Relying on auto-generated alt-text
+* Blindly using AI generated alt-text
 
 ## Alt-text v captions
 
 Alt-text:
-* Describes what's in the image
-* Uses description to paint a clear picture of the image
-* Does not need to include all image details
-* Cannot typically be read on the page
+* Describes what the user needs from the image
+* Usually not visible on the page
 
 Captions:
 * Identify what the image is about: citation information
@@ -32,3 +28,7 @@ Captions:
 
 (based on TTaDA's "Simple Images")
 
+## Markdown
+
+* Pandoc's markdown [includes alt text](https://pandoc.org/MANUAL.html#images) automatically
+* R Markdown knitr code chunks need to have [`fig.alt="alt text"`](https://yihui.org/knitr/options/) (note that `lm.plot` creates separate figures, so fig.alt should be a character vector of the appropriate length)
