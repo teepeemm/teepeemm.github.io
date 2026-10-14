@@ -23,7 +23,7 @@ Accessible PDF files using LaTeX
 ``` latex
 \documentclass{article}
 \begin{document}
-\IfFormatAtLeastF{%
+\IfFormatAtLeastF{
  \the\numexpr\number\year-1\relax-\number\month-\number\day
 }{not }up to date
 \end{document}
