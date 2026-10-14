@@ -19,10 +19,20 @@ Accessible PDF files using LaTeX
 \usepackage{unicode-math}
 ```
 * Compile with LuaLaTeX
+* To see if your TeX is up to date, compile
+``` latex
+\documentclass{article}
+\begin{document}
+\IfFormatAtLeastF{%
+ \the\numexpr\number\year-1\relax-\number\month-\number\day
+}{not }up to date
+\end{document}
+```
 * Any `\includegraphics`, `\tikz`, or `{tikzpicture}` or `{picture}` environments need `alt={...}` in the options (if the image is truly decorative, you can use the option `artifact` instead of `alt`; a different option is `actualtext={...}` if your image is really text in disguise).
 [Other alt text guidelines](altText.html).
 See `texdoc latex-lab-graphic` for more.
-* Before tabular (or similar), use `\tagpdfsetup{table/header-rows={...},table/header-columns={...}}`. Use `\tagpdfsetup{table/multirow={...}}` within such cells.
+* Before tabular (or similar), use `\tagpdfsetup{table/header-rows={...},table/header-columns={...}}`.
+Use `\tagpdfsetup{table/multirow={...}}` within such cells.
 See `texdoc latex-lab-table` for more.
 * The `check-tagging-status` key will report [general class and package status](https://latex3.github.io/tagging-project/tagging-status/).
 * [For more information](https://latex3.github.io/tagging-project/documentation/usage-instructions.html).
@@ -54,8 +64,8 @@ It's judgement probably shouldn't be trusted, but if it's judging you, you have 
 
 PDF Screen readers:
 -----------
-* NVDA or JAWS (both Windows only); Orca on Linux
-* Adobe, Foxit, or Firefox
+* [NVDA](https://www.nvaccess.org/download/) or JAWS (both Windows only); Orca on Linux
+* Adobe, [Foxit](https://www.foxit.com/pdf-reader/), or Firefox
 * [There are no others at this time](https://tex.stackexchange.com/a/755945/107497)
 
 Other links:
