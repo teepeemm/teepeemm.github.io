@@ -59,6 +59,8 @@ PDF Validators:
 * There are not many [other PDF validators](https://pdfa.org/accessible-math-in-pdf-finally/) that can handle math.
 * [PDF validation false negatives](https://github.com/latex3/tagging-project/discussions/categories/issues-with-accessibility-checkers-and-other-at-software)
 * FYI, [Ally's accessibility checklist](https://help.anthology.com/ally-lms/en/administrators/ally-accessibility-checklist.html).
+<!-- Ally: Blackboard, Canvas, Brightspace, Moodle -->
+<!-- UDOIT: Canvas checks for existence of tags and title -->
 Note that Ally appears many times in the false negatives list, and also will readily award false positives.
 It's judgement probably shouldn't be trusted, but if it's judging you, you have to jump through a hoop and uncomment the `math/alt/use` line.
 
@@ -70,7 +72,8 @@ PDF Screen readers:
 
 Other links:
 -----------
-* An [article](https://tug.org/TUGboat/tb47-2/tb146prescott-book-accessibility.pdf) in [TUGboat](https://tug.org/TUGboat/) about my experience tagging the [Calculus](https://arts-sciences.und.edu/academics/math/calc-1-texts.html) textbook.
+* An [article](https://tug.org/TUGboat/tb47-2/tb146prescott-book-accessibility.pdf) in [TUGboat](https://tug.org/TUGboat/) about my experience tagging the [Calculus](https://arts-sciences.und.edu/academics/math/calc-1-texts.html) textbook
+and [a shorter version](https://pdfa.org/easily-making-an-accessible-pdf-textbook/) for [the PDF Association](https://pdfa.org/).
 * An ltx-talk [template](ltx-talk-und) for UND themed presentations
 * [Test PDF files](https://texlive.net/tests/MathML/)
 * [Tagging increases various system requirements](https://tex.stackexchange.com/a/751610/107497), so you may need [to increase](https://tex.stackexchange.com/a/741777/107497) [some limits](https://tex.stackexchange.com/a/518522/107497)
